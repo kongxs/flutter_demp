@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/widgets/BottomNavigation.dart';
 import 'package:flutter_app/widgets/CardDemo.dart';
 import 'package:flutter_app/widgets/ExpandDemo.dart';
 import 'package:flutter_app/widgets/GridViewDemo.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
 
 
-  var widgets = ["Text" , "Image","ListView" , "GridView" ,"Stack","Expand","CardDemo","WrapDemo"];
+  var widgets = ["Text" , "Image","ListView" , "GridView" ,"Stack","Expand","CardDemo","WrapDemo"
+  ,"BottomNavigation"];
 
   var colors = [Colors.cyan,Colors.black12];
 
@@ -102,6 +104,9 @@ class MyHomePage extends StatelessWidget {
         break;
         case "WrapDemo" :
         page = WrapDemo();
+        break;
+        case "BottomNavigation" :
+        page = BottomNavigation();
         break;
       default:
         break;
