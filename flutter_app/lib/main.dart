@@ -30,7 +30,7 @@ class MyHomePage extends StatelessWidget {
 
 
   var widgets = ["Text" , "Image","ListView" , "GridView" ,"Stack","Expand","CardDemo","WrapDemo"
-  ,"BottomNavigation"];
+  ,"BottomNavigation" , ];
 
   var colors = [Colors.cyan,Colors.black12];
 
@@ -106,7 +106,7 @@ class MyHomePage extends StatelessWidget {
         page = WrapDemo();
         break;
         case "BottomNavigation" :
-        page = BottomNavigation();
+        page = BottomNavigation("hello");
         break;
       default:
         break;
