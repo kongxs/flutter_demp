@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/widgets/CardDemo.dart';
+import 'package:flutter_app/widgets/ExpandDemo.dart';
+import 'package:flutter_app/widgets/GridViewDemo.dart';
+import 'package:flutter_app/widgets/ImageDemo.dart';
+import 'package:flutter_app/widgets/ListViewDemo.dart';
+import 'package:flutter_app/widgets/StackDemo.dart';
+import 'package:flutter_app/widgets/WrapDemo.dart';
+import './widgets/TextDemo.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,58 +25,97 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
+
+
+  var widgets = ["Text" , "Image","ListView" , "GridView" ,"Stack","Expand","CardDemo","WrapDemo"];
+
+  var colors = [Colors.cyan,Colors.black12];
+
+
+
   MyHomePage({Key key, this.title}) : super(key: key);
-
-
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-
-      _counter++;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
+    // TODO: implement build
+     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text("Flutter Demo"),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
+        child: ListView.builder(
+          scrollDirection: Axis.vertical,
+            itemBuilder: _buildItem,
+            itemCount: widgets.length,
+        )
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  Widget _buildItem(BuildContext context,int index) {
+
+    var color = index % 2 == 0 ? colors[0] : colors[1];
+
+    return new GestureDetector(
+      child: Container(
+        child: Text(widgets[index]),
+        alignment: Alignment.center,
+        height: 50,
+        color: color,
+      ),
+      onTap: ()=> onItemClick(context,index),
+    );
+  }
+
+  onItemClick(BuildContext context,int index) {
+
+    var page ;
+
+    switch(widgets[index]) {
+      case "Text" :
+        page = TextDemo();
+        break;
+      case "Image" :
+        page = ImageDemo();
+        break;
+      case "ListView" :
+        page = ListViewDemo();
+        break;
+      case "GridView" :
+        page = GridViewDemo();
+        break;
+      case "Stack" :
+        page = StackDemo();
+        break;
+        case "Expand" :
+        page = ExpandDemo();
+        break;
+        case "CardDemo" :
+        page = CardDemo();
+        break;
+        case "WrapDemo" :
+        page = WrapDemo();
+        break;
+      default:
+        break;
+    }
+    if (null != page) {
+      Navigator.push(
+          context, new MaterialPageRoute(builder: (context) => page));
+    } else {
+
+      Fluttertoast.showToast(msg: "未知页面");
+
+    }
+
+  }
+
 }
+
