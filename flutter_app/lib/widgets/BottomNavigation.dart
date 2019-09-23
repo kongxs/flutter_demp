@@ -36,7 +36,13 @@ class _TabsState extends State {
 
       bottomNavigationBar: BottomNavigationBar(
 
+        iconSize: 19,
+        fixedColor: Colors.red,//选中颜色
+
         currentIndex: currentIndex,//默认选中
+
+        type: BottomNavigationBarType.fixed,
+
 
         onTap: (int index) {
             setState(() {
@@ -54,6 +60,8 @@ class _TabsState extends State {
               icon: Icon(Icons.search),
               title: Text("搜索")
           ),
+
+
         ],
 
       ),
