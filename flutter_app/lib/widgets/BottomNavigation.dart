@@ -31,6 +31,7 @@ class _TabsState extends State<BottomNavigation> {
 
   List _pageList = [HomeTabs(),SearchTabs()];
 
+
   @override
   Widget build(BuildContext context) {
 

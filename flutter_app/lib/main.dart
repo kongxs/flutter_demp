@@ -17,6 +17,17 @@ import 'widgets/tabs/SearchTabs.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
+
+  var routes = {
+
+  '/home':(context,{arguments}) => HomeTabs(arguments:arguments),
+
+  '/search':(context) => SearchTabs(),
+
+  };
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,9 +37,34 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
-      routes: {
-        '/home':(context) => HomeTabs(),
-        '/search':(context) => SearchTabs(),
+//      routes: routes,
+      //固定写法
+      onGenerateRoute: (RouteSettings settings) {
+
+        final String name = settings.name;
+
+        final Function pageBuilder = this.routes[name];
+
+        if (pageBuilder != null) {
+
+          if (settings.arguments != null) {
+            final Route route = MaterialPageRoute(
+
+              builder: (context) => pageBuilder(context,arguments: settings.arguments),
+
+            );
+            return route;
+          } else {
+
+            final Route route = MaterialPageRoute(
+
+              builder: (context) => pageBuilder(context),
+
+            );
+            return route;
+          }
+        }
+        return null;
       },
     );
   }
@@ -41,6 +77,8 @@ class MyHomePage extends StatelessWidget {
   ,"BottomNavigation" , "RouteDemo" ,];
 
   var colors = [Colors.cyan,Colors.black12];
+
+
 
 
 
@@ -70,7 +108,9 @@ class MyHomePage extends StatelessWidget {
          //命名路由
          child: Text("btn"),
          onPressed: () => {
-           Navigator.pushNamed(context, '/home'),
+           Navigator.pushNamed(context, "/home",arguments: {
+             "id" : "11sasdfasdfasdfadfafdafasdfadfafdasdfafa",
+           })
          },
        ),
     );
@@ -122,10 +162,12 @@ class MyHomePage extends StatelessWidget {
         page = WrapDemo();
         break;
         case "BottomNavigation" :
-        page = BottomNavigation("hello");
+        page = BottomNavigation("BottomNavigation");
         break;
         case "RouteDemo" :
-        page = RouteDemo();
+
+          toRouteDemo(context);
+
         break;
       default:
         break;
@@ -135,10 +177,17 @@ class MyHomePage extends StatelessWidget {
           context, new MaterialPageRoute(builder: (context) => page));
     } else {
 
-      Fluttertoast.showToast(msg: "未知页面");
+//      Fluttertoast.showToast(msg: "未知页面");
 
     }
 
+  }
+
+
+  void toRouteDemo(BuildContext context) async {
+    final result = await Navigator.push(context,MaterialPageRoute(builder:(context) => RouteDemo() ));
+
+    Fluttertoast.showToast(msg: result);
   }
 
 }

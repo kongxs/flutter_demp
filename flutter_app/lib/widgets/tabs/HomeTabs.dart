@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 
 class HomeTabs extends StatefulWidget {
 
+  final arguments;
+
+  HomeTabs({this.arguments});
+
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -11,11 +16,26 @@ class HomeTabs extends StatefulWidget {
   }
 }
 
-class HomTabsState extends State {
+class HomTabsState extends State<HomeTabs> {
 
   @override
   Widget build(BuildContext context) {
-    return Text("home");
+
+    var argu = widget.arguments;
+
+    var va = "";
+
+    if (argu != null) {
+      va = argu["id"];
+    }
+
+    return Text("home  = $va "  );
   }
 
 }
+
+
+
+
+
+

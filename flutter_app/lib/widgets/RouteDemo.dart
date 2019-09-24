@@ -16,18 +16,17 @@ class RouteDemo extends BaseStateLessWidget {
     return Center(
         child: Container(
           height: 100,
-          width: 100,
           child: GestureDetector(
             child: Card(
               child: Text(
-                "card" ,
+                "click to pop" ,
                 textAlign: TextAlign.center,
               ),
               elevation: 10,
               margin:EdgeInsets.all(30) ,
             ),
             onTap: () => {
-              Navigator.pushNamed(context, "/home"),
+              Navigator.pop(context,"result from route"),
             },
           )
         ),
