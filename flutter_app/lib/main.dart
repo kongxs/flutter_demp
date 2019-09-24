@@ -10,6 +10,10 @@ import 'package:flutter_app/widgets/WrapDemo.dart';
 import './widgets/TextDemo.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'widgets/RouteDemo.dart';
+import 'widgets/tabs/HomeTabs.dart';
+import 'widgets/tabs/SearchTabs.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -22,6 +26,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        '/home':(context) => HomeTabs(),
+        '/search':(context) => SearchTabs(),
+      },
     );
   }
 }
@@ -30,7 +38,7 @@ class MyHomePage extends StatelessWidget {
 
 
   var widgets = ["Text" , "Image","ListView" , "GridView" ,"Stack","Expand","CardDemo","WrapDemo"
-  ,"BottomNavigation" , ];
+  ,"BottomNavigation" , "RouteDemo" ,];
 
   var colors = [Colors.cyan,Colors.black12];
 
@@ -58,6 +66,13 @@ class MyHomePage extends StatelessWidget {
             itemCount: widgets.length,
         )
       ),
+       floatingActionButton: FloatingActionButton(
+         //命名路由
+         child: Text("btn"),
+         onPressed: () => {
+           Navigator.pushNamed(context, '/home'),
+         },
+       ),
     );
   }
 
@@ -75,6 +90,7 @@ class MyHomePage extends StatelessWidget {
       onTap: ()=> onItemClick(context,index),
     );
   }
+
 
   onItemClick(BuildContext context,int index) {
 
@@ -107,6 +123,9 @@ class MyHomePage extends StatelessWidget {
         break;
         case "BottomNavigation" :
         page = BottomNavigation("hello");
+        break;
+        case "RouteDemo" :
+        page = RouteDemo();
         break;
       default:
         break;
