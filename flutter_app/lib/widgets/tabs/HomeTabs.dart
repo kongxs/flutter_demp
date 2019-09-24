@@ -29,7 +29,12 @@ class HomTabsState extends State<HomeTabs> {
       va = argu["id"];
     }
 
-    return Text("home  = $va "  );
+    return Scaffold(
+      body: Center(
+        child:
+         Text("home  = $va "  ),
+      ),
+    );
   }
 
 }

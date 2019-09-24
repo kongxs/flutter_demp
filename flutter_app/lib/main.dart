@@ -6,6 +6,7 @@ import 'package:flutter_app/widgets/GridViewDemo.dart';
 import 'package:flutter_app/widgets/ImageDemo.dart';
 import 'package:flutter_app/widgets/ListViewDemo.dart';
 import 'package:flutter_app/widgets/StackDemo.dart';
+import 'package:flutter_app/widgets/TopNavigatorDemo.dart';
 import 'package:flutter_app/widgets/WrapDemo.dart';
 import './widgets/TextDemo.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Flutter Demo Home Page'),
 //      routes: routes,
       //固定写法
+//      initialRoute: ,//默认页面
       onGenerateRoute: (RouteSettings settings) {
 
         final String name = settings.name;
@@ -74,7 +76,7 @@ class MyHomePage extends StatelessWidget {
 
 
   var widgets = ["Text" , "Image","ListView" , "GridView" ,"Stack","Expand","CardDemo","WrapDemo"
-  ,"BottomNavigation" , "RouteDemo" ,];
+  ,"BottomNavigation" , "RouteDemo" , "TabBar" ,];
 
   var colors = [Colors.cyan,Colors.black12];
 
@@ -169,6 +171,11 @@ class MyHomePage extends StatelessWidget {
           toRouteDemo(context);
 
         break;
+        case "TabBar" :
+
+          page = TopNavigatorDemo();
+
+        break;
       default:
         break;
     }
@@ -183,11 +190,12 @@ class MyHomePage extends StatelessWidget {
 
   }
 
-
   void toRouteDemo(BuildContext context) async {
+
     final result = await Navigator.push(context,MaterialPageRoute(builder:(context) => RouteDemo() ));
 
     Fluttertoast.showToast(msg: result);
+
   }
 
 }
