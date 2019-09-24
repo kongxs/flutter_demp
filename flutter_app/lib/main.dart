@@ -7,6 +7,7 @@ import 'package:flutter_app/widgets/ImageDemo.dart';
 import 'package:flutter_app/widgets/ListViewDemo.dart';
 import 'package:flutter_app/widgets/StackDemo.dart';
 import 'package:flutter_app/widgets/TopNavigatorDemo.dart';
+import 'package:flutter_app/widgets/TopNavigatorDemo2.dart';
 import 'package:flutter_app/widgets/WrapDemo.dart';
 import './widgets/TextDemo.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -22,9 +23,9 @@ class MyApp extends StatelessWidget {
 
   var routes = {
 
-  '/home':(context,{arguments}) => HomeTabs(arguments:arguments),
+    '/home':(context,{arguments}) => HomeTabs(arguments:arguments),
 
-  '/search':(context) => SearchTabs(),
+    '/search':(context) => SearchTabs(),
 
   };
 
@@ -76,7 +77,7 @@ class MyHomePage extends StatelessWidget {
 
 
   var widgets = ["Text" , "Image","ListView" , "GridView" ,"Stack","Expand","CardDemo","WrapDemo"
-  ,"BottomNavigation" , "RouteDemo" , "TabBar" ,];
+  ,"BottomNavigation" , "RouteDemo" , "TabBar" , "TabBar2" ,];
 
   var colors = [Colors.cyan,Colors.black12];
 
@@ -167,14 +168,13 @@ class MyHomePage extends StatelessWidget {
         page = BottomNavigation("BottomNavigation");
         break;
         case "RouteDemo" :
-
           toRouteDemo(context);
-
         break;
         case "TabBar" :
-
           page = TopNavigatorDemo();
-
+        break;
+        case "TabBar2" :
+          page = TopNavigatorDemo2();
         break;
       default:
         break;

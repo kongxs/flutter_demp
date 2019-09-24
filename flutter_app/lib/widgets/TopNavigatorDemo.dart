@@ -27,6 +27,7 @@ class MyHomeDemo extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+
           title: Text("appbar title "),
           bottom: TabBar(
             tabs: <Widget>[
