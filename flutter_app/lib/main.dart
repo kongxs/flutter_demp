@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/widgets/BottomNavigation.dart';
 import 'package:flutter_app/widgets/CardDemo.dart';
@@ -93,6 +94,32 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
      return Scaffold(
+      drawer: Container(
+
+        color: Colors.white,
+
+        child: Column(
+
+          children: <Widget>[
+
+            DrawerHeader(
+                child : Text('text')
+            ),
+
+            Text(
+              "hellop --------------  "
+            ),
+
+
+            Text(
+                "hellop --------------  "
+            ),
+
+          ],
+        ),
+      ),
+      endDrawer: Text("world"),
+      drawerDragStartBehavior: DragStartBehavior.start,
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -109,6 +136,7 @@ class MyHomePage extends StatelessWidget {
       ),
        floatingActionButton: FloatingActionButton(
          //命名路由
+         shape: Border.,
          child: Text("btn"),
          onPressed: () => {
            Navigator.pushNamed(context, "/home",arguments: {
@@ -116,6 +144,7 @@ class MyHomePage extends StatelessWidget {
            })
          },
        ),
+       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 
