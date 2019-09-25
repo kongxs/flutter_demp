@@ -136,7 +136,6 @@ class MyHomePage extends StatelessWidget {
       ),
        floatingActionButton: FloatingActionButton(
          //命名路由
-         shape: Border.,
          child: Text("btn"),
          onPressed: () => {
            Navigator.pushNamed(context, "/home",arguments: {
