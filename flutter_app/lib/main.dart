@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/widgets/AnimationDemo.dart';
 import 'package:flutter_app/widgets/BottomNavigation.dart';
 import 'package:flutter_app/widgets/CardDemo.dart';
 import 'package:flutter_app/widgets/ExpandDemo.dart';
@@ -79,7 +80,7 @@ class MyHomePage extends StatelessWidget {
 
 
   var widgets = ["Text" , "Image","ListView" , "GridView" ,"Stack","Expand","CardDemo","WrapDemo"
-  ,"BottomNavigation" , "RouteDemo" , "TabBar" , "TabBar2" , "Gesture"];
+  ,"BottomNavigation" , "RouteDemo" , "TabBar" , "TabBar2" , "Gesture" , "animation"];
 
   var colors = [Colors.cyan,Colors.black12];
 
@@ -207,6 +208,9 @@ class MyHomePage extends StatelessWidget {
         break;
       case "Gesture" :
         page = GestureDemo();
+        break;
+      case "animation" :
+        page = AnimationDemo();
         break;
       default:
         break;
