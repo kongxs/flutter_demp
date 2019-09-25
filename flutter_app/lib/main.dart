@@ -13,6 +13,7 @@ import 'package:flutter_app/widgets/WrapDemo.dart';
 import './widgets/TextDemo.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'widgets/GestureDemo.dart';
 import 'widgets/RouteDemo.dart';
 import 'widgets/tabs/HomeTabs.dart';
 import 'widgets/tabs/SearchTabs.dart';
@@ -78,7 +79,7 @@ class MyHomePage extends StatelessWidget {
 
 
   var widgets = ["Text" , "Image","ListView" , "GridView" ,"Stack","Expand","CardDemo","WrapDemo"
-  ,"BottomNavigation" , "RouteDemo" , "TabBar" , "TabBar2" ,];
+  ,"BottomNavigation" , "RouteDemo" , "TabBar" , "TabBar2" , "Gesture"];
 
   var colors = [Colors.cyan,Colors.black12];
 
@@ -203,6 +204,9 @@ class MyHomePage extends StatelessWidget {
         break;
         case "TabBar2" :
           page = TopNavigatorDemo2();
+        break;
+      case "Gesture" :
+        page = GestureDemo();
         break;
       default:
         break;
