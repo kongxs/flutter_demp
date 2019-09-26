@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/provider/counter.dart';
+import 'package:flutter_app/provider/store.dart';
 
 
 
@@ -30,9 +32,36 @@ class HomTabsState extends State<HomeTabs> {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text("home"),
+      ),
       body: Center(
-        child:
-         Text("home  = $va "  ),
+        child: Column(
+          children: <Widget>[
+
+            Text("home  = $va "  ),
+
+
+            Builder(
+              builder: (context) {
+                return Text(
+                    'second page: ${Store.value<Count>(context).count}'
+                );
+              },
+            ),
+
+
+            RaisedButton(
+              child: Text("button"),
+              onPressed: () => {
+                Store.value<Count>(context).add()
+              },
+            ),
+
+
+
+          ],
+        )
       ),
     );
   }

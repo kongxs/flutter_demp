@@ -22,6 +22,21 @@ class TextState extends State<TextDemo> {
 
    var tile_val;
 
+   @override
+  void didUpdateWidget(TextDemo oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

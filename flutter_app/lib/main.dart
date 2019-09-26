@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/provider/counter.dart';
+import 'package:flutter_app/provider/store.dart';
 import 'package:flutter_app/widgets/AnimationDemo.dart';
 import 'package:flutter_app/widgets/BottomNavigation.dart';
 import 'package:flutter_app/widgets/CardDemo.dart';
@@ -19,7 +23,14 @@ import 'widgets/RouteDemo.dart';
 import 'widgets/tabs/HomeTabs.dart';
 import 'widgets/tabs/SearchTabs.dart';
 
-void main() => runApp(MyApp());
+import 'package:provider/provider.dart';
+
+
+void main() {
+
+  runApp(MyApp());
+
+}
 
 class MyApp extends StatelessWidget {
 
@@ -35,44 +46,56 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
 
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return Store.init(
+      context: context,
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+
+          primarySwatch: Colors.blue,
+        ),
+        home: Builder(
+            builder: (context) {
+
+              Store.widgetCtx = context;
+
+              return MyHomePage(title: 'Flutter Demo Home Page');
+            }
+        ),
 //      routes: routes,
-      //固定写法
+        //固定写法
 //      initialRoute: ,//默认页面
-      onGenerateRoute: (RouteSettings settings) {
+        onGenerateRoute: (RouteSettings settings) {
 
-        final String name = settings.name;
+          final String name = settings.name;
 
-        final Function pageBuilder = this.routes[name];
+          final Function pageBuilder = this.routes[name];
 
-        if (pageBuilder != null) {
+          if (pageBuilder != null) {
 
-          if (settings.arguments != null) {
-            final Route route = MaterialPageRoute(
+            if (settings.arguments != null) {
+              final Route route = MaterialPageRoute(
 
-              builder: (context) => pageBuilder(context,arguments: settings.arguments),
+                builder: (context) => pageBuilder(context,arguments: settings.arguments),
 
-            );
-            return route;
-          } else {
+              );
+              return route;
+            } else {
 
-            final Route route = MaterialPageRoute(
+              final Route route = MaterialPageRoute(
 
-              builder: (context) => pageBuilder(context),
+                builder: (context) => pageBuilder(context),
 
-            );
-            return route;
+              );
+              return route;
+            }
           }
-        }
-        return null;
-      },
+          return null;
+        },
+      ),
     );
+
   }
 }
 
@@ -136,15 +159,22 @@ class MyHomePage extends StatelessWidget {
             itemCount: widgets.length,
         )
       ),
-       floatingActionButton: FloatingActionButton(
-         //命名路由
-         child: Text("btn"),
-         onPressed: () => {
-           Navigator.pushNamed(context, "/home",arguments: {
-             "id" : "11sasdfasdfasdfadfafdafasdfadfafdasdfafa",
-           })
-         },
+       floatingActionButton: Store.connect<Count>(
+         builder: (context, snapshot, child) {
+            return FloatingActionButton(
+              onPressed: ()  {
+//                snapshot.add()
+                Navigator.pushNamed(context, "/home");
+              },
+
+              child: Text(
+                  '${Store.value<Count>(context).count}'
+              ),
+
+            );
+         }
        ),
+//       ),
        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
