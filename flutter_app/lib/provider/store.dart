@@ -13,6 +13,7 @@ class Store {
   static init({context, child}) {
     return MultiProvider(
       providers: [
+//        Provider<Count>.value(value: Count(1)),
         ChangeNotifierProvider(builder: (_) => Count(1)),
       ],
       child: child,

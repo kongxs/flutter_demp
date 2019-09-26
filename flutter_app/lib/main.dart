@@ -160,7 +160,7 @@ class MyHomePage extends StatelessWidget {
         )
       ),
        floatingActionButton: Store.connect<Count>(
-         builder: (context, snapshot, child) {
+         builder: (BuildContext context, Count snapshot, Widget child) {
             return FloatingActionButton(
               onPressed: ()  {
 //                snapshot.add()
@@ -168,7 +168,8 @@ class MyHomePage extends StatelessWidget {
               },
 
               child: Text(
-                  '${Store.value<Count>(context).count}'
+//                  '${Store.value<Count>(context).count}'
+                  '${snapshot.count}'
               ),
 
             );

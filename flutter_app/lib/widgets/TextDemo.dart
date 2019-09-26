@@ -123,17 +123,17 @@ class TextState extends State<TextDemo> {
           },
         ),
 
-          SwitchListTile(
-            selected: tile_val,
-            title: Text("hello"),
-              value: tile_val,
-              onChanged: (val) => {
-                setState(() {
-
-                  tile_val = val;
-                })
-              },
-          )
+//          SwitchListTile(
+//            selected: tile_val,
+//            title: Text("hello"),
+//              value: tile_val,
+//              onChanged: (val) => {
+//                setState(() {
+//
+//                  tile_val = val;
+//                })
+//              },
+//          )
 
 
 
