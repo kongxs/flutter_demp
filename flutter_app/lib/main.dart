@@ -185,13 +185,19 @@ class MyHomePage extends StatelessWidget {
     var color = index % 2 == 0 ? colors[0] : colors[1];
 
     return new GestureDetector(
-      child: Container(
-        child: Text(widgets[index]),
-        alignment: Alignment.center,
-        height: 50,
-        color: color,
-      ),
-      onTap: ()=> onItemClick(context,index),
+      child: Dismissible(
+        onDismissed: (direction) {
+
+        },
+        key: Key(index.toString()),
+        child: Container(
+          child: Text(widgets[index]),
+          alignment: Alignment.center,
+          height: 50,
+          color: color,
+        ),
+        ),
+        onTap: ()=> onItemClick(context,index),
     );
   }
 
