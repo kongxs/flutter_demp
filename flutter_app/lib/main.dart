@@ -11,6 +11,7 @@ import 'package:flutter_app/widgets/ExpandDemo.dart';
 import 'package:flutter_app/widgets/GridViewDemo.dart';
 import 'package:flutter_app/widgets/ImageDemo.dart';
 import 'package:flutter_app/widgets/ListViewDemo.dart';
+import 'package:flutter_app/widgets/NativeDemo.dart';
 import 'package:flutter_app/widgets/StackDemo.dart';
 import 'package:flutter_app/widgets/TopNavigatorDemo.dart';
 import 'package:flutter_app/widgets/TopNavigatorDemo2.dart';
@@ -103,7 +104,7 @@ class MyHomePage extends StatelessWidget {
 
 
   var widgets = ["Text" , "Image","ListView" , "GridView" ,"Stack","Expand","CardDemo","WrapDemo"
-  ,"BottomNavigation" , "RouteDemo" , "TabBar" , "TabBar2" , "Gesture" , "animation"];
+  ,"BottomNavigation" , "RouteDemo" , "TabBar" , "TabBar2" , "Gesture" , "animation" , "nativeAndroid"];
 
   var colors = [Colors.cyan,Colors.black12];
 
@@ -248,6 +249,9 @@ class MyHomePage extends StatelessWidget {
         break;
       case "animation" :
         page = AnimationDemo();
+        break;
+      case "nativeAndroid" :
+        page = NativeAndroid();
         break;
       default:
         break;
